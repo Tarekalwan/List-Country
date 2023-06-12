@@ -1,0 +1,15 @@
+<select [(ngModel)]="selectedContinent" (change)="onContinentChange()">
+  <option value="">All Continents</option>
+  <option *ngFor="let continent of continents" [value]="continent">{{ continent }}</option>
+</select>
+
+<input type="text" (input)="onSearchChange($event)" placeholder="Search for a country...">
+<div class="container">
+  <div class="card" *ngFor="let country of filteredCountries">
+    <h2 (click)="goToCountryDetail(country.name.common)">{{ country.name.common }}</h2>
+  <p>{{ country.region }}</p>
+  <img [src]="country.flags.png" alt="{{ country.name.common }} flag">
+  </div>
+</div>
+
+
