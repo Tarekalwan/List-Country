@@ -21,8 +21,12 @@ export class CountryDetailComponent implements OnInit {
     this.route.paramMap.subscribe(params => {
       const countryName = params.get('name');
       if (countryName) {
-        this.countryService.getCountryByName(countryName).subscribe((country: Country) => {
-          this.country = country;
+        this.countryService.getCountryByName(countryName).subscribe((countries: Country) => {
+          this.country = countries;
+          this.isLoading = false;
+        },
+        error => {
+          console.error('Error occurred: ', error);
           this.isLoading = false;
         });
       }

@@ -10,6 +10,10 @@
   <p>{{ country.region }}</p>
   <img [src]="country.flags.png" alt="{{ country.name.common }} flag">
   </div>
+   <!-- Ajoutez ce bloc ici -->
+   <div *ngIf="filteredCountries.length === 0">
+    <p>Aucun pays ne correspond à votre recherche.</p>
+  </div>
 </div>
 
 

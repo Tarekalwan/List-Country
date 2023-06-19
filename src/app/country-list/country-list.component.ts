@@ -27,7 +27,8 @@ export class CountryListComponent implements OnInit {
   onSearchChange(event: any): void {
     const searchValue = event.target.value;
     this.filteredCountries = this.countries.filter(country =>
-      country.name.common.toLowerCase().includes(searchValue.toLowerCase())
+      country.name.common.toLowerCase().includes(searchValue.toLowerCase()) &&
+      (this.selectedContinent ? country.region.includes(this.selectedContinent) : true)
     );
   }
 
